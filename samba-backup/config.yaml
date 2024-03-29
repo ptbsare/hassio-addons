@@ -18,7 +18,6 @@ hassio_role: manager
 stdin: true
 map:
   - backup:rw
-image: ptbsare/samba-backup-{arch}
 init: false
 options:
   host: null
