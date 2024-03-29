@@ -15,7 +15,7 @@ function create-backup {
 
     SNAP_NAME=$(generate-backup-name)
 
-    args=("--homeassistant-exclude-database=true ")
+    args=()
     args+=("--name" "$SNAP_NAME")
     [ -n "$BACKUP_PWD" ] && args+=("--password" "$BACKUP_PWD")
 
@@ -32,7 +32,7 @@ function create-backup {
 
     # run the command
     bashio::log.info "Creating backup \"${SNAP_NAME}\""
-    SLUG="$(ha backups new "${args[@]}" --raw-json | jq -r .data.slug)"
+    SLUG="$(ha backups new "${args[@]}" --homeassistant-exclude-database=true --raw-json | jq -r .data.slug)"
 }
 
 # ------------------------------------------------------------------------------
