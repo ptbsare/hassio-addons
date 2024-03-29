@@ -15,7 +15,7 @@ function create-backup {
 
     SNAP_NAME=$(generate-backup-name)
 
-    args=()
+    args=("--homeassistant-exclude-database=true ")
     args+=("--name" "$SNAP_NAME")
     [ -n "$BACKUP_PWD" ] && args+=("--password" "$BACKUP_PWD")
 
